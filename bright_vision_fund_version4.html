@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bright Vision Fund</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: #bcd6ff;
+    color: #111;
+    font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+    line-height: 1.45;
+  }
+
+  /* ---------- HEADER ---------- */
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #bcd6ff;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    background: #222;
+    border-radius: 50% 50% 45% 45%;
+  }
+
+  nav {
+    display: flex;
+    gap: 10px;
+  }
+
+  nav a {
+    color: #111;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    background: #82df4e;
+    outline: 3px solid #111;
+  }
+
+  .menu-button {
+    display: none;
+    background: transparent;
+    border: 0;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  /* ---------- GENERAL ---------- */
+
+  main {
+    max-width: 1050px;
+    margin: auto;
+  }
+
+  section {
+    min-height: 650px;
+    padding: 80px 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero {
+    text-align: center;
+    align-items: center;
+  }
+
+  /* ---------- BRAILLE ---------- */
+
+  .dots {
+    font-size: 2rem;
+    letter-spacing: 8px;
+    margin-bottom: 18px;
+    font-family: Arial, sans-serif;
+  }
+
+  /* ---------- HEADINGS ---------- */
+
+  h1,
+  h2 {
+    margin: 0 0 22px;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: .95;
+  }
+
+  h2 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 1;
+  }
+
+  .pink {
+    color: #f05ca7;
+  }
+
+  .hero p {
+    max-width: 700px;
+    font-size: 1.25rem;
+  }
+
+  /* ---------- BLACK CARDS ---------- */
+
+  .big-card {
+    width: min(760px, 100%);
+    background: #222;
+    color: white;
+    border-radius: 34px;
+    padding: 35px;
+    margin-top: 30px;
+  }
+
+  .big-card p {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  .arrow {
+    font-size: 4rem;
+    margin: 10px 0;
+  }
+
+  /* ---------- CARDS ---------- */
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 8px 8px 0 #222;
+  }
+
+  .card h3 {
+    font-size: 1.6rem;
+    margin-top: 0;
+  }
+
+  /* ---------- DONATION ---------- */
+
+  .donate-box {
+    background: #222;
+    color: white;
+    border-radius: 35px;
+    padding: 38px;
+    width: min(760px, 100%);
+    margin: auto;
+  }
+
+  label {
+    display: block;
+    margin: 16px 0 7px;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 15px;
+    border: 3px solid #111;
+    border-radius: 14px;
+    font: inherit;
+    background: white;
+    color: #111;
+  }
+
+  .button {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 16px 26px;
+    border: 0;
+    border-radius: 18px;
+    background: #82df4e;
+    color: #111;
+    font: inherit;
+    font-weight: 700;
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+
+  .button:hover,
+  .button:focus {
+    outline: 4px solid #f05ca7;
+    outline-offset: 3px;
+  }
+
+  .back {
+    background: #82df4e;
+    color: #111;
+    padding: 14px 25px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 15px;
+  }
+
+  .notice {
+    margin-top: 20px;
+    background: #fff2a8;
+    color: #111;
+    padding: 16px;
+    border-radius: 15px;
+    font-weight: 700;
+  }
+
+  /* ---------- VIDEO ---------- */
+
+  .video-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 15px;
+    background: #111;
+  }
+
+  .video-box iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer {
+    text-align: center;
+    padding: 35px 7%;
+    background: #bcd6ff;
+    border-top: 3px solid #111;
+  }
+
+  :focus-visible {
+    outline: 4px solid #f05ca7;
+    outline-offset: 3px;
+  }
+
+  /* ---------- MOBILE ---------- */
+
+  @media (max-width: 700px) {
+
+    nav {
+      display: none;
+    }
+
+    nav.open {
+      display: flex;
+      position: absolute;
+      top: 75px;
+      right: 6%;
+      flex-direction: column;
+      background: #fff;
+      padding: 12px;
+      border: 3px solid #111;
+      border-radius: 16px;
+    }
+
+    .menu-button {
+      display: block;
+    }
+
+    section {
+      min-height: auto;
+      padding: 70px 6%;
+    }
+
+    .cards {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 3.4rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Bright Vision Fund</span>
+  </div>
+
+  <button
+    class="menu-button"
+    aria-label="Open menu"
+    onclick="toggleMenu()">
+    ☰
+  </button>
+
+  <nav id="nav" aria-label="Main navigation">
+
+    <a href="#home" onclick="closeMenu()">Home</a>
+
+    <a href="#about" onclick="closeMenu()">About</a>
+
+    <a href="#help" onclick="closeMenu()">How It Helps</a>
+
+    <a href="#donate" onclick="closeMenu()">Donate</a>
+
+    <a href="#instructions" onclick="closeMenu()">Instructions</a>
+
+    <a href="#videos" onclick="closeMenu()">Videos</a>
+
+  </nav>
+
+</header>
+
+
+<main>
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="hero">
+
+  <!-- "VISION" written in Braille -->
+  <div
+    class="dots"
+    aria-label="VISION written in Braille"
+    title="VISION in Braille">
+
+    ⠧ ⠊ ⠎ ⠊ ⠕ ⠝
+
+  </div>
+
+  <p class="pink">
+    SEEING A MORE ACCESSIBLE FUTURE
+  </p>
+
+  <h1>
+    Brighten<br>
+    someone's<br>
+    future.
+  </h1>
+
+  <p>
+    A school fundraising project raising awareness
+    and support for people who are visually impaired.
+  </p>
+
+  <div class="big-card">
+
+    <p>
+      Small acts of support can help create a world
+      where information, education and everyday spaces
+      are more accessible.
+    </p>
+
+  </div>
+
+  <div class="arrow" aria-hidden="true">
+    ↓
+  </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+  <p class="pink">
+    01 — ABOUT
+  </p>
+
+  <h2>
+    Why does<br>
+    it matter?
+  </h2>
+
+  <div class="big-card">
+
+    <p>
+      Visual impairment can make some everyday tasks
+      more difficult. Learning about accessibility helps
+      us understand how communities can become more
+      welcoming and inclusive.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= HOW IT HELPS ================= -->
+
+<section id="help">
+
+  <p class="pink">
+    02 — HOW IT HELPS
+  </p>
+
+  <h2>
+    Every bit<br>
+    can help.
+  </h2>
+
+  <div class="cards">
+
+    <article class="card">
+
+      <h3>
+        ♿ Accessibility
+      </h3>
+
+      <p>
+        Support can contribute to accessible information,
+        technology and spaces.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <h3>
+        📚 Education
+      </h3>
+
+      <p>
+        Resources can make learning and information
+        easier to access.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <h3>
+        🤝 Community
+      </h3>
+
+      <p>
+        Awareness can encourage people to build
+        a more inclusive community.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DONATE ================= -->
+
+<section id="donate">
+
+  <p class="pink">
+    03 — SUPPORT
+  </p>
+
+  <h2>
+    Make a<br>
+    difference.
+  </h2>
+
+  <div class="donate-box">
+
+    <p>
+      This is a <strong>school-project demo</strong>.
+      It does not process real payments or collect
+      real banking information.
+    </p>
+
+
+    <label for="people">
+      Number of people you would like to support
+    </label>
+
+    <input
+      id="people"
+      type="number"
+      min="1"
+      max="99"
+      value="1">
+
+
+    <label for="amount">
+      Demo donation amount
+    </label>
+
+    <select id="amount">
+
+      <option value="10">
+        $10
+      </option>
+
+      <option value="25">
+        $25
+      </option>
+
+      <option value="50">
+        $50
+      </option>
+
+      <option value="100">
+        $100
+      </option>
+
+    </select>
+
+
+    <button
+      class="button"
+      onclick="confirmDonation()">
+
+      Confirm and continue
+
+    </button>
+
+
+    <div
+      id="message"
+      class="notice"
+      hidden
+      aria-live="polite">
+    </div>
+
+
+    <a
+      class="back"
+      href="#home">
+
+      Back to top
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- ================= INSTRUCTIONS ================= -->
+
+<section id="instructions">
+
+  <p class="pink">
+    04 — INSTRUCTIONS
+  </p>
+
+  <h2>
+    How to use<br>
+    our website.
+  </h2>
+
+
+  <div class="cards">
+
+    <article class="card">
+
+      <h3>
+        01 · Explore
+      </h3>
+
+      <p>
+        Start on the Home page, then read about visual
+        impairment and why accessibility matters.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <h3>
+        02 · Learn
+      </h3>
+
+      <p>
+        Visit the How It Helps and Videos sections
+        to learn more about accessibility.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <h3>
+        03 · Try the demo
+      </h3>
+
+      <p>
+        Use the Donate page to test our fundraising
+        demonstration. No real payment is made.
+      </p>
+
+    </article>
+
+  </div>
+
+
+  <div class="big-card">
+
+    <p>
+      <strong>Accessibility tip:</strong>
+      We use large text, clear buttons and strong
+      contrast to make the site easier to navigate.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= VIDEOS ================= -->
+
+<section id="videos">
+
+  <p class="pink">
+    05 — VIDEOS
+  </p>
+
+  <h2>
+    Watch &<br>
+    learn.
+  </h2>
+
+
+  <div class="cards">
+
+    <!-- VIDEO 1 -->
+
+    <article class="card">
+
+      <h3>
+        🎥 Web Accessibility
+      </h3>
+
+      <p>
+        This video explains why accessibility is
+        important and how accessible design can
+        benefit everyone.
+      </p>
+
+      <div class="video-box">
+
+        <iframe
+          title="W3C Web Accessibility Perspectives video"
+          src="https://www.youtube-nocookie.com/embed/iWO5N3n1DXU"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+      <p class="small">
+        Video by the W3C Web Accessibility Initiative.
+      </p>
+
+    </article>
+
+
+    <!-- VIDEO 2 -->
+
+    <article class="card">
+
+      <h3>
+        🎬 Your Group's Video
+      </h3>
+
+      <p>
+        You can replace this section with a video
+        created by your group about visual impairment,
+        inclusion or your fundraising idea.
+      </p>
+
+      <div class="notice">
+        Add your group's video here.
+      </div>
+
+    </article>
+
+
+    <!-- VIDEO ACCESSIBILITY -->
+
+    <article class="card">
+
+      <h3>
+        📝 Video Accessibility
+      </h3>
+
+      <p>
+        Whenever possible, videos should include
+        captions and a text description or transcript
+        so more people can access the information.
+      </p>
+
+      <div class="notice">
+
+        Captions help people understand important
+        spoken and non-spoken audio information.
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <strong>
+    Bright Vision Fund
+  </strong>
+
+  <p>
+    This website is a school project.
+  </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+  function toggleMenu() {
+
+    document
+      .getElementById("nav")
+      .classList
+      .toggle("open");
+
+  }
+
+
+  function closeMenu() {
+
+    document
+      .getElementById("nav")
+      .classList
+      .remove("open");
+
+  }
+
+
+  function confirmDonation() {
+
+    const people =
+      Math.max(
+        1,
+        Number(
+          document.getElementById("people").value
+        ) || 1
+      );
+
+    const amount =
+      Number(
+        document.getElementById("amount").value
+      );
+
+    const total =
+      people * amount;
+
+    const message =
+      document.getElementById("message");
+
+    message.hidden = false;
+
+    message.textContent =
+      "Thank you! Your demo shows " +
+      people +
+      " person(s) and a total of $" +
+      total +
+      ". No real payment has been made. 🌟";
+
+  }
+
+</script>
+
+</body>
+</html>
